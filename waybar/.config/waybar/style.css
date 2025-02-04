@@ -1,0 +1,104 @@
+@import url("./mocha.css");
+
+* {
+  font-family: "Caskaydia Cove Nerd Font";
+  font-size: 14px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px 5px;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px 5px 5px 0px;
+  background-color: @base;
+  padding: 0rem 1rem;
+}
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
+}
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+}
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+#workspaces button.urgent {
+  color: @red;
+  border-radius: 1rem;
+}
+
+#keyboard-state {
+  padding: 0 1rem;
+}
+
+#window {
+  background-color: @base;
+  border-radius: 1rem 1rem 1rem 1rem;
+  padding: 0.5rem 2rem;
+  margin: 5px 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+  background-color: @base;
+  border-radius: 1rem 0px 0px 1rem;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#network {
+  color: @mauve;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#cpu {
+  color: @flamingo;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#memory {
+  color: @pink;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#battery {
+  color: @green;
+  background-color: @base;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+#battery.charging {
+  color: @green;
+}
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#clock {
+  color: @sapphire;
+  background-color: @base;
+  border-radius: 0px 1rem 1rem 0px;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+
