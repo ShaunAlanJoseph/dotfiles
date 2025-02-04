@@ -1,0 +1,128 @@
+[
+    //================GENERAL===================//
+    // to toggle between terminal and editor
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.togglePanel",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+
+    // insert new line before
+    // {
+    //     "key": "shift+enter",
+    //     "command": "editor.action.insertLineBefore",
+    //     "when": "editorTextFocus && !editorReadonly"
+    // },
+    // {
+    //     "key": "ctrl+shift+enter",
+    //     "command": "-editor.action.insertLineBefore",
+    //     "when": "editorTextFocus && !editorReadonly"
+    // },
+    // insert new line after
+    // {
+    //     "key": "ctrl+enter",
+    //     "command": "editor.action.insertLineAfter",
+    //     "when": "editorTextFocus && !editorReadonly"
+    // },
+
+    // saving only using VIM
+    {
+        "key": "ctrl+s",
+        "command": "-workbench.action.files.save"
+    },
+
+    // splits
+    {
+        "key": "ctrl+alt+h",
+        "command": "workbench.action.moveEditorToLeftGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "workbench.action.moveEditorToRightGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "workbench.action.moveEditorToBelowGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.moveEditorToAboveGroup",
+        "when": "editorFocus"
+    },
+
+    //=============FILE TREE==============//
+    {
+        "key": "\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "editorFocus && vim.active && vim.mode == 'Normal'"
+    },
+    {
+        "key": "\\",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "editorFocus && vim.active && vim.mode == 'Normal'"
+    },
+    {
+        "key": "\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarFocus && !inputFocus"
+    },
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+
+    //===========FREEING UP HOTKEYS FROM VIM============//
+    {
+        "key": "ctrl+f",
+        "command": "-extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "-extension.vim_ctrl+k",
+        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-extension.vim_ctrl+n",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-extension.vim_ctrl+i",
+        "when": "editorTextFocus && vim.active && vim.use<C-i> && !inDebugRepl"
+    },
+]
