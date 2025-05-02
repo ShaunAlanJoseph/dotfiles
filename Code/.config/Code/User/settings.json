@@ -28,7 +28,7 @@
 
     "vim.insertModeKeyBindingsNonRecursive": [
         //===Navigation===//
-        { "before": ["k", "j"], "after": ["<Esc>"] },
+        { "before": ["k", "j"], "after": ["<Esc>"] }
     ],
 
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -56,7 +56,7 @@
         { "before": ["<C-r>"], "commands": ["redo"]},
 
         // toggle comment
-        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
+        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
     ],
 
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -68,12 +68,12 @@
         { "before": [">"], "commands": ["editor.action.indentLines"] },
         
         // toggle comment
-        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
+        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
     ],
     "workbench.colorTheme": "Black",
     "cSpell.userWords": [
         "CODEFORCES",
         "dotenv",
         "problemset"
-    ],
+    ]
 }
