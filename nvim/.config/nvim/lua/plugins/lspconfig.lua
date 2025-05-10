@@ -73,6 +73,40 @@ local lsp_attach = function(event)
     end
 end
 
+local function diagnostic_config()
+    local severity = vim.diagnostic.severity
+    vim.diagnostic.config({
+        severity_sort = true,
+        float = { border = "rounded", source = "if_many" },
+        underline = { severity = { severity.ERROR } },
+        signs = {
+            text = {
+                [severity.ERROR] = "󰅚 ",
+                [severity.WARN] = "󰀪 ",
+                [severity.INFO] = "󰋽 ",
+                [severity.HINT] = "󰌶 ",
+            },
+        },
+        virtual_text = {
+            severity = {
+                severity.INFO,
+                severity.HINT,
+            },
+            source = "if_many",
+            spacing = 2,
+        },
+        virtual_lines = {
+            severity = {
+                severity.ERROR,
+                severity.WARN,
+            },
+            format = function(diagnostic)
+                return diagnostic.message .. " -- " .. diagnostic.source
+            end,
+        },
+    })
+end
+
 return {
     {
         "folke/lazydev.nvim",
@@ -83,22 +117,23 @@ return {
         },
     },
     {
+        "mason-org/mason.nvim",
+        opts = {
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
+                },
+            },
+        },
+    },
+    {
         "neovim/nvim-lspconfig",
         dependencies = {
             -- Automatically install LSPs and related tools
-            {
-                "williamboman/mason.nvim",
-                opts = {
-                    ui = {
-                        icons = {
-                            package_installed = "✓",
-                            package_pending = "➜",
-                            package_uninstalled = "✗",
-                        },
-                    },
-                },
-            },
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason.nvim",
+            "mason-org/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Status updates for LSP
@@ -113,68 +148,42 @@ return {
                 callback = lsp_attach,
             })
 
-            -- Diagnostic config
-            local severity = vim.diagnostic.severity
-            vim.diagnostic.config({
-                severity_sort = true,
-                float = { border = "rounded", source = "if_many" },
-                underline = { severity = { severity.ERROR } },
-                signs = {
-                    text = {
-                        [severity.ERROR] = "󰅚 ",
-                        [severity.WARN] = "󰀪 ",
-                        [severity.INFO] = "󰋽 ",
-                        [severity.HINT] = "󰌶 ",
-                    },
-                },
-                virtual_text = {
-                    severity = {
-                        severity.INFO,
-                        severity.HINT,
-                    },
-                    source = "if_many",
-                    spacing = 2,
-                },
-                virtual_lines = {
-                    severity = {
-                        severity.ERROR,
-                        severity.WARN,
-                    },
-                    format = function(diagnostic)
-                        return diagnostic.message .. " -- " .. diagnostic.source
-                    end,
-                },
-            })
+            diagnostic_config()
 
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-            local servers = {
-                lua_ls = { -- Lua LSP
-                    settings = {
-                        Lua = {
-                            completion = { callSnippet = "Replace" },
+            vim.lsp.config("lua_ls", {
+                settings = {
+                    Lua = {
+                        completion = { callSnippet = "Both" },
+                    },
+                },
+            })
+
+            vim.lsp.config("pyright", {
+                settings = {
+                    python = {
+                        analysis = {
+                            diagnosticSeverityOverrides = { reportUnusedExpression = "none" },
                         },
                     },
                 },
+            })
+
+            -- Servers
+            local ensure_installed = {
+                "lua_ls", -- Lua LSP
+                "pyright", -- Python LSP
             }
 
-            local ensure_installed = vim.tbl_keys(servers)
+            -- Additional
             vim.list_extend(ensure_installed, {
                 "stylua", -- Lua formatter
+                "prettierd", -- Markdown formatter
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-            require("mason-lspconfig").setup({
-                ensure_installed = {},
-                automatic_installation = false,
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                        require("lspconfig")[server_name].setup(server)
-                    end,
-                },
-            })
+            require("mason-lspconfig").setup()
         end,
     },
 }

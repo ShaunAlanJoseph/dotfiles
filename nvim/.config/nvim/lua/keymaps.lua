@@ -66,7 +66,7 @@ create_autocmd("VimResized", {
 create_autocmd("BufWritePre", {
     group = create_augroup("format-on-save", { clear = true }),
     desc = "Format files when they are saved",
-    callback = function()
-        vim.lsp.buf.format({ async = false })
+    callback = function(args)
+        vim.lsp.buf.format({ async = false, bufnr = args.buf })
     end,
 })

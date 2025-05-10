@@ -2,7 +2,7 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false

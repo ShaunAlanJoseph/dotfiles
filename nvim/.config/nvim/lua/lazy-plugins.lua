@@ -51,4 +51,6 @@ require("lazy").setup({
     require("plugins/none-ls"), -- Linter
 
     require("plugins/winsep"),
+
+    require("jupyter"),
 })
