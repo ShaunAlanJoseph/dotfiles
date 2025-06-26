@@ -21,9 +21,13 @@ eval "$(starship init bash)"
 # Created by `pipx` on 2025-04-19 04:10:33
 export PATH="$PATH:$HOME/.local/bin"
 
+# Flutter
+export PATH="$HOME/development/flutter/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
 # venv_wrapper - # See https://gist.github.com/dbtek/fb2ddccb18f0cf63a654ea2cc94c8f19
 
-export VENV_HOME="$HOME/.venv"
+export VENV_HOME="$HOME/virtual_environments"
 [[ -d $VENV_HOME ]] || mkdir -p $VENV_HOME
 
 lsvenv() {
