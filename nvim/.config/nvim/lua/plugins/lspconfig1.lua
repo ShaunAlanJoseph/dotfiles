@@ -73,49 +73,48 @@ local lsp_attach = function(event)
     end
 end
 
-local function diagnostic_config()
-    local severity = vim.diagnostic.severity
-    vim.diagnostic.config({
-        severity_sort = true,
-        float = { border = "rounded", source = "if_many" },
-        underline = { severity = { severity.ERROR } },
-        signs = {
-            text = {
-                [severity.ERROR] = "󰅚 ",
-                [severity.WARN] = "󰀪 ",
-                [severity.INFO] = "󰋽 ",
-                [severity.HINT] = "󰌶 ",
-            },
-        },
-        virtual_text = {
-            severity = {
-                severity.INFO,
-                severity.HINT,
-            },
-            source = true,
-            spacing = 2,
-        },
-        virtual_lines = {
-            severity = {
-                severity.ERROR,
-                severity.WARN,
-            },
-            format = function(diagnostic)
-                return diagnostic.message .. " -- " .. diagnostic.source
-            end,
-        },
-    })
-end
-
-return {
-    {
-        "folke/lazydev.nvim",
-        opts = {
-            library = {
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            },
+-- Diagnostic config
+local severity = vim.diagnostic.severity
+vim.diagnostic.config({
+    severity_sort = true,
+    float = { border = "rounded", source = "if_many" },
+    underline = { severity = { severity.ERROR } },
+    signs = {
+        text = {
+            [severity.ERROR] = "󰅚 ",
+            [severity.WARN] = "󰀪 ",
+            [severity.INFO] = "󰋽 ",
+            [severity.HINT] = "󰌶 ",
         },
     },
+    virtual_text = {
+        severity = {
+            severity.INFO,
+            severity.HINT,
+        },
+        source = true,
+        spacing = 2,
+    },
+    virtual_lines = {
+        severity = {
+            severity.ERROR,
+            severity.WARN,
+        },
+        format = function(diagnostic)
+            return diagnostic.message .. " -- " .. diagnostic.source
+        end,
+    },
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+    callback = function(event)
+        lsp_attach(event)
+        vim.lsp.completion.enable(true, event.data.client_id, event.buf)
+    end,
+})
+
+return {
     {
         "mason-org/mason.nvim",
         opts = {
@@ -128,80 +127,43 @@ return {
             },
         },
     },
+    { "j-hui/fidget.nvim", opts = {} },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        opts = {
+            "lua-language-server", -- Lua LSP
+            "pyright",             -- Python LSP
+            "stylua",              -- Lua formatter
+            "prettierd",           -- Markdown formatter
+            "isort",               -- Python imports formatter
+            "black",               -- Python formatter
+        },
+    },
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            -- Automatically install LSPs and related tools
-            "mason-org/mason.nvim",
-            "mason-org/mason-lspconfig.nvim",
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
-
-            -- Status updates for LSP
-            { "j-hui/fidget.nvim", opts = {} },
-
-            -- Extra capabilities provided by blink.cmp
-            "saghen/blink.cmp",
-        },
         config = function()
-            vim.api.nvim_create_autocmd("LspAttach", {
-                group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
-                callback = lsp_attach,
-            })
-
-            diagnostic_config()
-
             local capabilities = require("blink.cmp").get_lsp_capabilities()
-            vim.lsp.config("*", { capabilities = capabilities })
+            local lspconfig = require("lspconfig")
 
-            vim.lsp.config("lua_ls", {
-                settings = {
-                    Lua = {
-                        completion = { callSnippet = "Both" },
-                    },
-                },
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities,
+                settings = { Lua = { completion = { callSnippet = "Both" } } },
             })
 
-            vim.lsp.config("pyright", {
+            lspconfig.pyright.setup({
+                capabilities = capabilities,
                 settings = {
                     python = {
                         analysis = {
                             diagnosticMode = "openFilesOnly",
                             typeCheckingMode = "basic",
                             diagnosticSeverityOverrides = {
-                                reportUnusedImport = false,
-                                -- reportUnusedExpression = false,
+                                reportUnusedExpression = "none",
                             },
                         },
                     },
-                    pyright = { disableOrganizeImports = true },
                 },
             })
-
-            vim.lsp.config("ruff", {
-                on_attach = function(client, _)
-                    if client.name == "ruff" then
-                        client.server_capabilities.hoverProvider = false
-                    end
-                end,
-            })
-
-            -- Servers
-            local ensure_installed = {
-                "lua_ls",  -- Lua LSP
-                "pyright", -- Python LSP
-                "ruff",    -- Python linter
-            }
-
-            -- Additional
-            vim.list_extend(ensure_installed, {
-                "stylua",    -- Lua formatter
-                "prettierd", -- Markdown formatter
-                "isort",     -- Python imports formatter
-                "black",     -- Python formatter
-            })
-            require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-            require("mason-lspconfig").setup()
         end,
     },
 }

@@ -11,6 +11,7 @@ return {
                 "cpp",
                 "diff",
                 "html",
+                "latex",
                 "lua",
                 "luadoc",
                 "markdown",

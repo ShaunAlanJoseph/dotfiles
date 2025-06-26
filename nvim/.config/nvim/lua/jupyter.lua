@@ -134,6 +134,7 @@ return {
 
             vim.keymap.set("n", "<leader>rc", runner.run_cell, { desc = "[R]un [C]ell" })
             vim.keymap.set("n", "<leader>ra", runner.run_above, { desc = "[R]un [A]bove" })
+            vim.keymap.set("n", "<leader>rb", runner.run_below, { desc = "[R]un [A]bove" })
             vim.keymap.set("n", "<leader>rA", runner.run_all, { desc = "[R]un [A]ll" })
             vim.keymap.set("n", "<leader>rl", runner.run_line, { desc = "[R]un [L]ine" })
             vim.keymap.set("v", "<leader>r", runner.run_range, { desc = "[R]un Range" })
@@ -154,7 +155,6 @@ return {
                 pattern = "*.ipynb",
                 desc = "Format files when they are saved",
                 callback = function(args)
-                    print("Formatting . . . " .. vim.api.nvim_buf_get_name(args.buf))
                     vim.lsp.buf.format({ async = false, bufnr = args.buf })
                 end,
             })

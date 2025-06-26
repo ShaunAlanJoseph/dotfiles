@@ -11,10 +11,6 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- Use Space + hl to cycle between buffers
-vim.keymap.set("n", "<leader>h", vim.cmd.bprev, { desc = "Go to the prev buffer" })
-vim.keymap.set("n", "<leader>l", vim.cmd.bnext, { desc = "Go to the next buffer" })
-
 -- Formatting
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "[F]ormat buffer" })
 
@@ -51,7 +47,7 @@ create_autocmd("TextYankPost", {
     desc = "Highlight when yanking",
     group = create_augroup("yank-highlight", { clear = true }),
     callback = function()
-        vim.highlight.on_yank()
+        vim.hl.on_yank()
     end,
 })
 

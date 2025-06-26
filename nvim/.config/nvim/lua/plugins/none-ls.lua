@@ -43,6 +43,9 @@ return {
                 },
                 factory = helpers.formatter_factory,
             }),
+
+            formatting.isort,
+            formatting.black,
         }
 
         null_ls.setup({

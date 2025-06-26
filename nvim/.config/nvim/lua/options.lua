@@ -1,40 +1,40 @@
 -- Visual
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.showmode = false
-vim.opt.scrolloff = 5
-vim.opt.cursorline = true
-vim.opt.signcolumn = "yes"
-vim.opt.wrap = false
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.showmode = false
+vim.o.scrolloff = 5
+vim.o.cursorline = true
+vim.o.signcolumn = "yes"
+vim.o.wrap = false
 
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.smartindent = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.smartindent = true
 
 -- Case-insensitive searching unless \C or capital letters in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-vim.opt.mouse = "a"
+vim.o.mouse = "a"
 
 vim.undofile = true
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Sets how certain whitespace characters will be displayed
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = ".", nbsp = "␣" }
+vim.o.list = true
+vim.o.listchars = "tab:» ,trail:.,nbsp:␣"
 
 -- Preview substitutions live
-vim.opt.inccommand = "split"
+vim.o.inccommand = "split"
 
 -- Confirmation dialog
-vim.opt.confirm = true
+vim.o.confirm = true
 
 -- Uses 24-bit #rrggbb colors
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
-vim.opt.updatetime = 250 -- Sets delay for certain events
-vim.opt.timeoutlen = 300 -- Max time to wait for a key map
+vim.o.updatetime = 250 -- Sets delay for certain events
+vim.o.timeoutlen = 300 -- Max time to wait for a key map
