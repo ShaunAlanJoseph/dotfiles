@@ -1,79 +1,239 @@
 {
     // VS Code
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}VS Code with Shaun",
+    "workbench.colorTheme": "Catppuccin Mocha",
     "git.openRepositoryInParentFolders": "never",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.settings.applyToAllProfiles": [ "workbench.colorCustomizations" ],
+    "workbench.settings.applyToAllProfiles": [
+        "workbench.colorCustomizations"
+    ],
     "workbench.colorCustomizations": {
         "terminal.background": "#00000000",
-        "gitDecoration.untrackedResourceForeground": "#f9e2af",  // Yellow color for untracked files
-        "gitDecoration.modifiedResourceForeground": "#a6e3a1",   // Green color for modified files
-        "gitDecoration.stageModifiedResourceForeground": "#a6e3a1"   // Green color for modified files
+        "gitDecoration.untrackedResourceForeground": "#f9e2af", // Yellow color for untracked files
+        "gitDecoration.modifiedResourceForeground": "#a6e3a1", // Green color for modified files
+        "gitDecoration.stageModifiedResourceForeground": "#a6e3a1" // Green color for modified files
     },
-
     // UI
     "window.titleBarStyle": "custom",
     "workbench.activityBar.location": "top",
     "window.customTitleBarVisibility": "auto",
     "editor.minimap.enabled": false,
-
     "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono', monospace",
     "editor.fontLigatures": true,
     "editor.cursorBlinking": "expand",
-
+    // Rainbow Indent
+    "indentRainbow.lightIndicatorStyleLineWidth": 1,
+    "indentRainbow.indicatorStyle": "light",
+    "indentRainbow.colors": [
+        "rgba(255,255,64,0.2)",
+        "rgba(127,255,127,0.2)",
+        "rgba(255,127,255,0.2)",
+        "rgba(79,236,236,0.2)"
+    ],
+    "indentRainbow.ignoreErrorLanguages": [
+        "markdown",
+        "dart"
+    ],
     // VIM
     "editor.lineNumbers": "relative",
     "vim.leader": "<Space>",
     "vim.mouseSelectionGoesIntoVisualMode": true,
-
+    "vim.ignorecase": false,
     "vim.insertModeKeyBindingsNonRecursive": [
         //===Navigation===//
-        { "before": ["k", "j"], "after": ["<Esc>"] }
+        {
+            "before": [
+                "k",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
     ],
-
     "vim.normalModeKeyBindingsNonRecursive": [
-        //===Navigation===//
-        // switch b/w buffers
-        { "before": ["leader", "h"], "commands": [":bprevious"] },
-        { "before": ["leader", "l"], "commands": [":bnext"] },
-
-        // panes
-        { "before": ["<C-h>"], "commands": ["workbench.action.focusLeftGroup"] },
-        { "before": ["<C-l>"], "commands": ["workbench.action.focusRightGroup"] },
-        // { "before": ["<C-j>"], "commands": ["workbench.action.focusBelowGroup"] },
-        // { "before": ["<C-k>"], "commands": ["workbench.action.focusAboveGroup"] },
-
         //===MISC===//
         // yanking
-        { "before": ["<leader>", "y"], "after": [":", "%", "y", "+", "<CR>"] },
-        { "before": ["<leader>", "p"], "commands": ["copyFilePath"] },
-
+        {
+            "before": [
+                "<leader>",
+                "y"
+            ],
+            "after": [
+                ":",
+                "%",
+                "y",
+                "+",
+                "<CR>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "copyFilePath"
+            ]
+        },
         // formatting
-        { "before": ["leader", "f"], "commands": ["editor.action.formatDocument"] },
-
+        {
+            "before": [
+                "leader",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
         // undo && redo
-        { "before": ["u"], "commands": ["undo"]},
-        { "before": ["<C-r>"], "commands": ["redo"]},
-
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": [
+                "<C-r>"
+            ],
+            "commands": [
+                "redo"
+            ]
+        },
         // toggle comment
-        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+        {
+            "before": [
+                // "leader",
+                "g",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        // code actions
+        {
+            "before": [
+                "g",
+                "r",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        // files
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        }
     ],
-
     "vim.visualModeKeyBindingsNonRecursive": [
         // yanking
-        { "before": ["<leader>", "y"], "after": ["\"", "+", "y"] },
-
+        {
+            "before": [
+                "<A-y>"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
         // stay in visual mode while indenting
-        { "before": ["<"], "commands": ["editor.action.outdentLines"] },
-        { "before": [">"], "commands": ["editor.action.indentLines"] },
-        
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
         // toggle comment
-        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+        {
+            "before": [
+                // "leader",
+                "g",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        // code actions
+        {
+            "before": [
+                "g",
+                "r",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        // files
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        }
     ],
-    "workbench.colorTheme": "Black",
+    // Misc
+    "editor.acceptSuggestionOnEnter": "off",
     "cSpell.userWords": [
         "CODEFORCES",
         "dotenv",
         "problemset"
-    ]
+    ],
+    "dart.flutterSdkPath": "/home/shxun/flutter",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "dart": true
+    },
+    "workbench.iconTheme": "material-icon-theme"
 }

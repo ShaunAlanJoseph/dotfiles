@@ -2,81 +2,149 @@
     //================GENERAL===================//
     // to toggle between terminal and editor
     {
-        "key": "ctrl+j",
+        "key": "ctrl+shift+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+shift+j",
         "command": "workbench.action.terminal.focus",
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+j",
-        "command": "workbench.action.togglePanel",
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
     {
         "key": "ctrl+j",
-        "command": "-workbench.action.togglePanel"
+        "command": "workbench.action.togglePanel"
     },
-
     // insert new line before
-    // {
-    //     "key": "shift+enter",
-    //     "command": "editor.action.insertLineBefore",
-    //     "when": "editorTextFocus && !editorReadonly"
-    // },
-    // {
-    //     "key": "ctrl+shift+enter",
-    //     "command": "-editor.action.insertLineBefore",
-    //     "when": "editorTextFocus && !editorReadonly"
-    // },
-    // insert new line after
-    // {
-    //     "key": "ctrl+enter",
-    //     "command": "editor.action.insertLineAfter",
-    //     "when": "editorTextFocus && !editorReadonly"
-    // },
-
-    // saving only using VIM
     {
-        "key": "ctrl+s",
-        "command": "-workbench.action.files.save"
+        "key": "shift+enter",
+        "command": "editor.action.insertLineBefore",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Insert'"
     },
-
-    // splits
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-editor.action.insertLineBefore",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    // insert new line after
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.insertLineAfter",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Insert'"
+    },
+    //=============TABS & GROUPS==============//
+    // close tab
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    // tab navigation
+    {
+        "key": "ctrl+h",
+        "command": "-editor.action.startFindReplaceAction"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditorInGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditorInGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus"
+    },
+    // move tab in group
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.moveEditorRightInGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.moveEditorLeftInGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus"
+    },
+    // group navigation
     {
         "key": "ctrl+alt+h",
-        "command": "workbench.action.moveEditorToLeftGroup",
-        "when": "editorFocus"
+        "command": "workbench.action.focusLeftGroup"
     },
     {
         "key": "ctrl+alt+l",
-        "command": "workbench.action.moveEditorToRightGroup",
-        "when": "editorFocus"
+        "command": "workbench.action.focusRightGroup"
     },
     {
         "key": "ctrl+alt+j",
-        "command": "workbench.action.moveEditorToBelowGroup",
-        "when": "editorFocus"
+        "command": "workbench.action.focusBelowGroup"
     },
     {
         "key": "ctrl+alt+k",
-        "command": "workbench.action.moveEditorToAboveGroup",
-        "when": "editorFocus"
+        "command": "workbench.action.focusAboveGroup"
     },
-
+    // moving tab to a different group
+    {
+        "key": "ctrl+w h",
+        "command": "workbench.action.moveEditorToLeftGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+w l",
+        "command": "workbench.action.moveEditorToRightGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+w j",
+        "command": "workbench.action.moveEditorToBelowGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+w k",
+        "command": "workbench.action.moveEditorToAboveGroup",
+        "when": "!panelFocus && !sideBarFocus && !auxiliaryBarFocus && vim.mode != 'Insert'"
+    },
+    //=============AUXILIARY SIDEBAR==============//
+    {
+        "key": "ctrl+shift+\\",
+        "command": "workbench.action.focusAuxiliaryBar",
+        "when": "!auxiliaryBarFocus"
+    },
+    {
+        "key": "ctrl+shift+\\",
+        "command": "workbench.action.closeAuxiliaryBar",
+        "when": "auxiliaryBarFocus"
+    },
     //=============FILE TREE==============//
     {
-        "key": "\\",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "editorFocus && vim.active && vim.mode == 'Normal'"
+        "key": "ctrl+\\",
+        "command": "-workbench.action.splitEditor"
     },
     {
-        "key": "\\",
+        "key": "ctrl+\\",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!panelFocus && !sideBarFocus"
+    },
+    {
+        "key": "ctrl+\\",
         "command": "workbench.files.action.focusFilesExplorer",
-        "when": "editorFocus && vim.active && vim.mode == 'Normal'"
+        "when": "!panelFocus && !sideBarFocus"
     },
     {
-        "key": "\\",
+        "key": "ctrl+\\",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "sideBarFocus && !inputFocus"
+        "when": "sideBarFocus"
     },
     {
         "key": "a",
@@ -89,31 +157,163 @@
         "when": "filesExplorerFocus && !inputFocus"
     },
     {
+        "key": "y",
+        "command": "filesExplorer.copy",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
         "key": "d",
         "command": "deleteFile",
         "when": "filesExplorerFocus && !inputFocus"
     },
-
+    //===========JUPYTER============//
+    // edit cell
+    {
+        "key": "enter",
+        "command": "notebook.cell.edit",
+        "when": "notebookCellListFocused && !editorHoverFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "i",
+        "command": "notebook.cell.edit",
+        "when": "notebookCellListFocused && !editorHoverFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    // toggle code cell or markdown cell
+    {
+        "key": "t",
+        "command": "notebook.cell.changeToCode",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputFocused && activeEditor == 'workbench.editor.notebook' && notebookCellType == 'markup'"
+    },
+    {
+        "key": "y",
+        "command": "-notebook.cell.changeToCode",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputFocused && activeEditor == 'workbench.editor.notebook' && notebookCellType == 'markup'"
+    },
+    {
+        "key": "t",
+        "command": "notebook.cell.changeToMarkdown",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputFocused && activeEditor == 'workbench.editor.notebook' && notebookCellType == 'code'"
+    },
+    {
+        "key": "m",
+        "command": "-notebook.cell.changeToMarkdown",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputFocused && activeEditor == 'workbench.editor.notebook' && notebookCellType == 'code'"
+    },
+    // copy cell
+    {
+        "key": "c",
+        "command": "-notebook.cell.copy",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "y",
+        "command": "notebook.cell.copy",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    // copy cell output
+    {
+        "key": "shift+y",
+        "command": "notebook.cellOutput.copy",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    // paste cell
+    {
+        "key": "p",
+        "command": "notebook.cell.paste",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "v",
+        "command": "-notebook.cell.paste",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "shift+p",
+        "command": "notebook.cell.pasteAbove",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-notebook.cell.pasteAbove",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    // insert cell
+    {
+        "key": "o",
+        "command": "notebook.cell.insertCodeCellBelow",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    {
+        "key": "shift+o",
+        "command": "notebook.cell.insertCodeCellAbove",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-notebook.cell.insertCodeCellAbove",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    // execute cell
+    {
+        "key": "r",
+        "command": "notebook.cell.execute",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    // execute above
+    {
+        "key": "shift+r a",
+        "command": "notebook.cell.executeCellsAbove",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    // execute below
+    {
+        "key": "shift+r b",
+        "command": "notebook.cell.executeCellAndBelow",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    // execute all
+    {
+        "key": "shift+r shift+a",
+        "command": "notebook.execute",
+        "when": "notebookCellListFocused && !inputFocus"
+    },
+    // clear output
+    {
+        "key": "backspace",
+        "command": "notebook.cell.clearOutputs",
+        "when": "notebookCellEditable && notebookCellHasOutputs && notebookEditable && notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "alt+delete",
+        "command": "-notebook.cell.clearOutputs",
+        "when": "notebookCellEditable && notebookCellHasOutputs && notebookEditable && notebookEditorFocused && !inputFocus"
+    },
+    //===========VIM LIKE============//
+    {
+        "key": "u",
+        "command": "undo",
+        "when": "!inputFocus"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "redo",
+        "when": "!inputFocus"
+    },
     //===========FREEING UP HOTKEYS FROM VIM============//
     {
-        "key": "ctrl+f",
-        "command": "-extension.vim_ctrl+f",
-        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "-extension.vim_ctrl+k",
-        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "-extension.vim_ctrl+n",
-        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "-extension.vim_ctrl+p",
-        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+        "key": "ctrl+h",
+        "command": "-extension.vim_ctrl+h",
+        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
     },
     {
         "key": "ctrl+j",
@@ -121,8 +321,8 @@
         "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
     },
     {
-        "key": "ctrl+i",
-        "command": "-extension.vim_ctrl+i",
-        "when": "editorTextFocus && vim.active && vim.use<C-i> && !inDebugRepl"
-    },
+        "key": "ctrl+k",
+        "command": "-extension.vim_ctrl+k",
+        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+    }
 ]
