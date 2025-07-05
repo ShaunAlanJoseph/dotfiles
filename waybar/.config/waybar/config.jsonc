@@ -46,7 +46,7 @@
         }
     },
     "tray": {
-        "spacing": 10
+        "spacing": 5
     },
 	"hyprland/window": {
 		"format": "{title}",
