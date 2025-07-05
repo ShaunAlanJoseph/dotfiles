@@ -15,11 +15,11 @@
     ],
     "modules-right": [
         "pulseaudio",
-        "network",
+        "battery",
 		"group/usage",
 		"group/disks",
-        "battery",
-        "clock"
+        "clock#time",
+        "clock#date"
     ],
 
     // Modules configuration
@@ -76,13 +76,20 @@
         },
         "on-click": "pavucontrol"
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " ",
-        "format-ethernet": " ",
-        "tooltip-format": "{essid} @ {gwaddr}  ",
-        "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": " "
+    "battery": {
+        "states": {
+			// "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
     },
 	"group/usage": {
 		"orientation": "orthogonal",
@@ -120,34 +127,24 @@
 		"unit": "GB",
 		"tooltip-format": "{specific_used:0.0f} GB used out of {specific_total:0.0f} GB"
 	},
-    "battery": {
-        "states": {
-			// "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "clock": {
+	"clock#time": {
 		"interval": 5,
-		"format": "{:%H:%M %a %d/%m}",
+		"format": "{:%H:%M}",
+		"tooltip-format": "{:%H:%M:%S %a %d/%m/%y}"
+	},
+    "clock#date": {
+		"interval": 300,
+		"format": "{:%a - %d/%m/%y}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
 			"mode": "month",
 			"mode-mon-col": 4,
 			"on-scroll": 1,
 			"format": {
-				"months": "<span color='#ffead3'><b>{}</b></span>",
-				"days": "<span color='#ecc6d9'><b>{}</b></span>",
-				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+				"months": "<span color='#cba6f7'><b>{}</b></span>",
+				"days": "<span color='#cdd6f4'><b>{}</b></span>",
+				"weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+				"today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
 			}
 		},
 		"actions": {

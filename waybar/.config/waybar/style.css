@@ -70,21 +70,26 @@ window#waybar.empty #window {
 	border: 2px solid @maroon;
 	border-right: none;
 	border-radius: 1rem 0px 0px 1rem;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 0.5rem 0.5rem 1rem;
 	margin: 5px 0;
 }
 
-#network {
-	color: @mauve;
+#battery {
+	color: @green;
 	background-color: @base;
-	border: 2px solid @mauve;
+	border: 2px solid @green;
 	border-left: none;
 	border-right: none;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem;
 	margin: 5px 0;
 }
 
-#network.disconnected {
+#battery.charging {
+	color: @green;
+	border-color: @green;
+}
+
+#battery.warning:not(.charging) {
 	color: @red;
 	border-color: @red;
 }
@@ -129,32 +134,22 @@ window#waybar.empty #window {
 	color: @teal;
 }
 
-#battery {
-	color: @green;
+#clock.time {
+	color: @mauve;
 	background-color: @base;
-	border: 2px solid @green;
+	border: 2px solid @mauve;
 	border-left: none;
 	border-right: none;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	margin: 5px 0;
 }
 
-#battery.charging {
-	color: @green;
-	border-color: @green;
-}
-
-#battery.warning:not(.charging) {
-	color: @red;
-	border-color: @red;
-}
-
-#clock {
+#clock.date {
 	color: @sapphire;
 	background-color: @base;
 	border: 2px solid @sapphire;
 	border-left: none;
 	border-radius: 0px 1rem 1rem 0px;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 1rem 0.5rem 0.5rem;
 	margin: 5px 10px 5px 0px;
 }
