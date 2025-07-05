@@ -1,15 +1,14 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 30,
-    "width": 1920,
+    // "width": 1920,
     "spacing": 5,
 	"fixed-center": false,
 
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "keyboard-state"
+        "tray"
     ],
     "modules-center": [
         "hyprland/window"
@@ -17,11 +16,10 @@
     "modules-right": [
         "pulseaudio",
         "network",
-        "cpu",
-        "memory",
+		"group/usage",
+		"group/disks",
         "battery",
-        "clock",
-        "tray"
+        "clock"
     ],
 
     // Modules configuration
@@ -43,50 +41,27 @@
         "capslock": true,
         "format": "{icon}",
         "format-icons": {
-            "locked": "Caps Lock ",
+            "locked": "Caps ",
             "unlocked": ""
         }
+    },
+    "tray": {
+        "spacing": 10
     },
 	"hyprland/window": {
 		"format": "{title}",
 		"rewrite": {
-			"(.*) — Mozilla Firefox": "$1 "
+			"(.*)Zen Browser": "$1 ",
+			"(.*)Zen Browser Private Browsing": "$1󰠥 ",
+			"(.*)VS Code with Shaun": "$1 "
 		},
 		"separate-outputs": true,
-		"icon": false,
-		"icon-size": 24
 	},
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
@@ -104,18 +79,47 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": " ",
-        "format-ethernet": "",
-        "tooltip-format": "{essid} @ {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "⚠"
+        "format-ethernet": " ",
+        "tooltip-format": "{essid} @ {gwaddr}  ",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": " "
     },
+	"group/usage": {
+		"orientation": "orthogonal",
+		"modules": [
+			"cpu",
+			"memory"
+		]
+	},
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "{usage}%  ",
+        "tooltip": true
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}%  ",
+		"tooltip-format": "{used:0.1f} GiB used"
     },
+	"group/disks": {
+		"orientation": "orthogonal",
+		"modules": [
+			"disk#root",
+			"disk#home"
+		]
+	},
+	"disk#root": {
+		"interval": 30,
+		"format": "{percentage_used}%  ",
+		"path": "/",
+		"unit": "GB",
+		"tooltip-format": "{specific_used:0.0f} GB used out of {specific_total:0.0f} GB"
+	},
+	"disk#home": {
+		"interval": 30,
+		"format": "{percentage_used}%  ",
+		"path": "/home",
+		"unit": "GB",
+		"tooltip-format": "{specific_used:0.0f} GB used out of {specific_total:0.0f} GB"
+	},
     "battery": {
         "states": {
 			// "good": 95,
@@ -133,7 +137,7 @@
     },
     "clock": {
 		"interval": 5,
-		"format": "{:%H:%M:%S - %a - %d/%m/%y}",
+		"format": "{:%H:%M %a %d/%m}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
 		"calendar": {
 			"mode": "month",
@@ -149,9 +153,5 @@
 		"actions": {
 			"on-click": "mode"
 		}
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
     }
 }

@@ -1,104 +1,160 @@
 @import url("./mocha.css");
-
 * {
-  font-family: "Caskaydia Cove Nerd Font";
-  font-size: 14px;
-  min-height: 0;
+	font-family: "CaskaydiaCove Nerd Font";
+	font-size: 14px;
+	min-height: 0;
 }
 
 #waybar {
-  background: transparent;
-  color: @text;
-  margin: 5px 5px;
+	background: transparent;
+	color: @text;
 }
 
 #workspaces {
-  border-radius: 1rem;
-  margin: 5px 5px 5px 0px;
-  background-color: @base;
-  padding: 0rem 1rem;
+	border-radius: 1rem;
+	background-color: @base;
+	border: 2px solid @teal;
+	padding: 0rem 1rem;
+	margin: 5px 5px 5px 10px;
 }
+
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
+	color: @teal;
+	border-radius: 1rem;
+	padding: 0 0.5rem 0 0.5rem;
 }
+
 #workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+	color: @mauve;
+	border-radius: 1rem;
 }
+
+#workspaces button.visible {
+	color: @mauve;
+	border-radius: 1rem;
+}
+
 #workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
+	color: @mauve;
+	border-radius: 1rem;
 }
+
 #workspaces button.urgent {
-  color: @red;
-  border-radius: 1rem;
-}
-
-#keyboard-state {
-  padding: 0 1rem;
-}
-
-#window {
-  background-color: @base;
-  border-radius: 1rem 1rem 1rem 1rem;
-  padding: 0.5rem 2rem;
-  margin: 5px 0;
-}
-
-#pulseaudio {
-  color: @maroon;
-  background-color: @base;
-  border-radius: 1rem 0px 0px 1rem;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
-}
-
-#network {
-  color: @mauve;
-  background-color: @base;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
-}
-
-#cpu {
-  color: @flamingo;
-  background-color: @base;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
-}
-
-#memory {
-  color: @pink;
-  background-color: @base;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
-}
-
-#battery {
-  color: @green;
-  background-color: @base;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
-}
-#battery.charging {
-  color: @green;
-}
-#battery.warning:not(.charging) {
-  color: @red;
-}
-
-#clock {
-  color: @sapphire;
-  background-color: @base;
-  border-radius: 0px 1rem 1rem 0px;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+	color: @red;
+	border-radius: 1rem;
 }
 
 #tray {
-  margin-right: 1rem;
-  border-radius: 1rem;
+	border-radius: 1rem;
+	background-color: @base;
+	border: 2px solid @text;
+	padding: 0.2rem 0.5rem;
+	margin: 5px 0px;
 }
 
+#window {
+	background-color: @base;
+	border: 2px solid @text;
+	border-radius: 1rem 1rem 1rem 1rem;
+	padding: 0.5rem 2rem;
+	margin: 5px 10px;
+}
+
+window#waybar.empty #window {
+	border: none;
+}
+
+#pulseaudio {
+	color: @maroon;
+	background-color: @base;
+	border: 2px solid @maroon;
+	border-right: none;
+	border-radius: 1rem 0px 0px 1rem;
+	padding: 0.5rem 1rem;
+	margin: 5px 0;
+}
+
+#network {
+	color: @mauve;
+	background-color: @base;
+	border: 2px solid @mauve;
+	border-left: none;
+	border-right: none;
+	padding: 0.5rem 1rem;
+	margin: 5px 0;
+}
+
+#network.disconnected {
+	color: @red;
+	border-color: @red;
+}
+
+/* Group styling for usage (cpu & memory) */
+#usage {
+	background-color: @base;
+	border: 2px solid @flamingo;
+	border-right: none;
+	border-radius: 1rem 0 0 1rem;
+	padding: 0.5rem;
+}
+
+#cpu {
+	color: @flamingo;
+	font-size: 12px;
+}
+
+#memory {
+	color: @pink;
+	font-size: 12px;
+}
+
+/* Group styling for disks (root & home) */
+#disks {
+	background-color: @base;
+	border: 2px solid @peach;
+	border-left: none;
+	border-radius: 0 1rem 1rem 0;
+	padding: 0.5rem;
+}
+
+#disk {
+	font-size: 12px;
+}
+
+#disk.root {
+	color: @peach;
+}
+
+#disk.home {
+	color: @teal;
+}
+
+#battery {
+	color: @green;
+	background-color: @base;
+	border: 2px solid @green;
+	border-left: none;
+	border-right: none;
+	padding: 0.5rem 1rem;
+	margin: 5px 0;
+}
+
+#battery.charging {
+	color: @green;
+	border-color: @green;
+}
+
+#battery.warning:not(.charging) {
+	color: @red;
+	border-color: @red;
+}
+
+#clock {
+	color: @sapphire;
+	background-color: @base;
+	border: 2px solid @sapphire;
+	border-left: none;
+	border-radius: 0px 1rem 1rem 0px;
+	padding: 0.5rem 1rem;
+	margin: 5px 10px 5px 0px;
+}
