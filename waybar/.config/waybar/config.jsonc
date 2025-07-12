@@ -49,11 +49,15 @@
         "spacing": 5
     },
 	"hyprland/window": {
-		"format": "{title}",
+		"format": "{class}",
 		"rewrite": {
-			"(.*)Zen Browser": "$1 ",
-			"(.*)Zen Browser Private Browsing": "$1󰠥 ",
-			"(.*)VS Code with Shaun": "$1 "
+			"zen": "ノ( º _ ºノ)",
+            "kitty": "¯\\_(ツ)_/¯",
+			"Code": "(╯°□°)╯︵ ",
+            "discord": "（ ^_^）o自自o（^_^ ）",
+            "obsidian": "(?_?)",
+            "elecwhat": "ヽ(´ー`)人(´∇｀)人(`Д´)ノ",
+            "spotify": "ヽ(´ー｀)ﾉ"
 		},
 		"separate-outputs": true,
 	},
