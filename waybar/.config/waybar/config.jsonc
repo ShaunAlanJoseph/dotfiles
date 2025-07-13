@@ -1,9 +1,13 @@
 {
     "layer": "bottom",
+    "height": 30,
     "position": "top",
-    // "width": 1920,
-    "spacing": 5,
+    "margin-top": 5,
+    "margin-right": 10,
+    "margin-left": 10,
+    "spacing": 0,
 	"fixed-center": false,
+    "reload_style_on_change": true,
 
     // Choose the order of the modules
     "modules-left": [
@@ -16,8 +20,10 @@
     "modules-right": [
         "pulseaudio",
         "battery",
-		"group/usage",
-		"group/disks",
+		"cpu",
+		"memory",
+		"disk#root",
+		"disk#home",
         "clock#time",
         "clock#date"
     ],
@@ -28,10 +34,6 @@
         "all-outputs": false,
         "format": "{name}: {icon}",
         "format-icons": {
-            // "1": "",
-            // "2": "",
-            // "4": "",
-            // "10": "",
             "urgent": "",
 			"active": "",
             "default": ""
@@ -63,7 +65,7 @@
 	},
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}  {format_source}",
+        "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon}  {format_source}",
         "format-bluetooth-muted": " {icon}  {format_source}",
         "format-muted": " {format_source}",
@@ -82,7 +84,6 @@
     },
     "battery": {
         "states": {
-			// "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -95,32 +96,18 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-	"group/usage": {
-		"orientation": "orthogonal",
-		"modules": [
-			"cpu",
-			"memory"
-		]
-	},
     "cpu": {
-        "format": "{usage}%  ",
+        "format": "{usage}% ",
         "tooltip": true
     },
     "memory": {
-        "format": "{}%  ",
+        "format": "{}% ",
 		"tooltip-format": "{used:0.1f} GiB used",
         "on-click": "hyprctl dispatch exec '[float; size 1000 1000; move 100%-w-2 2]' 'kitty -e btop'"
     },
-	"group/disks": {
-		"orientation": "orthogonal",
-		"modules": [
-			"disk#root",
-			"disk#home"
-		]
-	},
 	"disk#root": {
 		"interval": 30,
-		"format": "{percentage_used}%  ",
+		"format": "{percentage_used}% ",
 		"path": "/",
 		"unit": "GB",
 		"tooltip-format": "{specific_used:0.0f} GB used out of {specific_total:0.0f} GB",
@@ -128,7 +115,7 @@
 	},
 	"disk#home": {
 		"interval": 30,
-		"format": "{percentage_used}%  ",
+		"format": "{percentage_used}% ",
 		"path": "/home",
 		"unit": "GB",
 		"tooltip-format": "{specific_used:0.0f} GB used out of {specific_total:0.0f} GB",

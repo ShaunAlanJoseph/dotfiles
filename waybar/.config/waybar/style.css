@@ -1,8 +1,9 @@
 @import url("./mocha.css");
 * {
 	font-family: "CaskaydiaCove Nerd Font Propo";
-	font-size: 14px;
-	min-height: 0;
+	font-size: 13px;
+    margin: 0;
+    padding: 0;
 }
 
 #waybar {
@@ -13,29 +14,28 @@
 #workspaces {
 	border-radius: 1rem;
 	background-color: @base;
-	border: 2px solid @teal;
-	padding: 0rem 1rem;
-	margin: 5px 5px 5px 10px;
+	border: 2px solid @mauve;
+    padding: 0 10px;
 }
 
 #workspaces button {
-	color: @teal;
+	color: @mauve;
 	border-radius: 1rem;
-	padding: 0 0.5rem 0 0.5rem;
+    padding: 0 5px;
 }
 
 #workspaces button.active {
-	color: @mauve;
+	color: @peach;
 	border-radius: 1rem;
 }
 
 #workspaces button.visible {
-	color: @mauve;
+	color: @peach;
 	border-radius: 1rem;
 }
 
 #workspaces button:hover {
-	color: @mauve;
+	color: @peach;
 	border-radius: 1rem;
 }
 
@@ -45,19 +45,18 @@
 }
 
 #tray {
-	border-radius: 1rem;
 	background-color: @base;
 	border: 2px solid @text;
-	padding: 0.2rem 0.5rem;
-	margin: 5px 0px;
+	border-radius: 1rem;
+    padding: 0 10px;
+    margin: 0 0 0 5px;
 }
 
 #window {
 	background-color: @base;
 	border: 2px solid @text;
-	border-radius: 1rem 1rem 1rem 1rem;
-	padding: 0.5rem 2rem;
-	margin: 5px 10px;
+	border-radius: 1rem;
+    padding: 0 15px;
 }
 
 window#waybar.empty #window {
@@ -65,23 +64,21 @@ window#waybar.empty #window {
 }
 
 #pulseaudio {
-	color: @maroon;
+	color: @peach;
 	background-color: @base;
-	border: 2px solid @maroon;
-	border-right: none;
-	border-radius: 1rem 0px 0px 1rem;
-	padding: 0.5rem 0.5rem 0.5rem 1rem;
-	margin: 5px 0;
+	border: 2px solid @peach;
+	border-radius: 1rem;
+    padding: 0 10px;
+    margin: 0 5px 0 0;
 }
 
 #battery {
-	color: @green;
+	color: @mauve;
 	background-color: @base;
-	border: 2px solid @green;
-	border-left: none;
-	border-right: none;
-	padding: 0.5rem;
-	margin: 5px 0;
+	border: 2px solid @mauve;
+	border-radius: 1rem;
+    padding: 0 10px;
+    margin: 0 5px 0 0;
 }
 
 #battery.charging {
@@ -94,62 +91,58 @@ window#waybar.empty #window {
 	border-color: @red;
 }
 
-/* Group styling for usage (cpu & memory) */
-#usage {
-	background-color: @base;
-	border: 2px solid @flamingo;
-	border-right: none;
-	border-radius: 1rem 0 0 1rem;
-	padding: 0.5rem;
-}
-
 #cpu {
-	color: @flamingo;
-	font-size: 12px;
+	color: @peach;
+	background-color: @base;
+	border: 2px solid @peach;
+    border-right: none;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0 5px 0 10px;
 }
 
 #memory {
-	color: @pink;
-	font-size: 12px;
-}
-
-/* Group styling for disks (root & home) */
-#disks {
+	color: @peach;
 	background-color: @base;
 	border: 2px solid @peach;
-	border-left: none;
-	border-radius: 0 1rem 1rem 0;
-	padding: 0.5rem;
-}
-
-#disk {
-	font-size: 12px;
+    border-left: none;
+    border-radius: 0 1rem 1rem 0;
+    padding: 0 10px 0 5px;
+    margin: 0 5px 0 0;
 }
 
 #disk.root {
-	color: @peach;
-}
-
-#disk.home {
-	color: @teal;
-}
-
-#clock.time {
 	color: @mauve;
 	background-color: @base;
 	border: 2px solid @mauve;
-	border-left: none;
-	border-right: none;
-	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-	margin: 5px 0;
+    border-right: none;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0 5px 0 10px;
+}
+
+#disk.home {
+	color: @mauve;
+	background-color: @base;
+	border: 2px solid @mauve;
+    border-left: none;
+    border-radius: 0 1rem 1rem 0;
+    padding: 0 10px 0 5px;
+    margin: 0 5px 0 0;
+}
+
+#clock.time {
+	color: @peach;
+	background-color: @base;
+	border: 2px solid @peach;
+    border-right: none;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0 5px 0 10px;
 }
 
 #clock.date {
-	color: @sapphire;
+	color: @peach;
 	background-color: @base;
-	border: 2px solid @sapphire;
-	border-left: none;
-	border-radius: 0px 1rem 1rem 0px;
-	padding: 0.5rem 1rem 0.5rem 0.5rem;
-	margin: 5px 10px 5px 0px;
+	border: 2px solid @peach;
+    border-left: none;
+	border-radius: 0 1rem 1rem 0;
+    padding: 0 10px 0 5px;
 }
