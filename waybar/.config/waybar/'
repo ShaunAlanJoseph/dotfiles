@@ -59,18 +59,16 @@
             "discord": "（ ^_^）o自自o（^_^ ）",
             "obsidian": "(?_?)",
             "elecwhat": "ヽ(´ー`)人(´∇｀)人(`Д´)ノ",
-            "spotify": "ヽ(´ー｀)ﾉ",
-            "wofi": "(^_^)つー✩.*˚･ﾟ✧｡ﾟ",
-            "Brave-browser": "ฅ^•ﻌ•^ฅ"
+            "spotify": "ヽ(´ー｀)ﾉ"
 		},
 		"separate-outputs": true,
 	},
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} ",
-        "format-bluetooth-muted": " {icon} ",
-        "format-muted": " ",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": " {format_source}",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
