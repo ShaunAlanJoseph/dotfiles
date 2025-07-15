@@ -11,6 +11,9 @@ alias la='ls -a --color=auto'
 alias grep='grep --color=auto'
 alias py=python
 alias py3=python3
+alias i='yay -S'
+alias s='yay -Ss'
+alias r='yay -Rns'
 
 # basic shell prompt
 PS1='[\u@\h \W]\$ '
@@ -18,12 +21,12 @@ PS1='[\u@\h \W]\$ '
 # starship prompt
 eval "$(starship init bash)"
 
-# Created by `pipx` on 2025-04-19 04:10:33
+# pipx
 export PATH="$PATH:$HOME/.local/bin"
+eval "$(register-python-argcomplete pipx)"
 
-# Flutter
-export PATH="$HOME/development/flutter/bin:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
+# flutter
+export PATH="$PATH:$HOME/.local/bin/flutter/bin"
 
 # venv_wrapper - # See https://gist.github.com/dbtek/fb2ddccb18f0cf63a654ea2cc94c8f19
 
