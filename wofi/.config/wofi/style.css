@@ -52,17 +52,15 @@
 @define-color	crust-rgb  rgb(17, 17, 27);
 
 * {
-  font-family: 'Inconsolata Nerd Font', monospace;
+  font-family: 'CaskaydiaCove Nerd Font Propo', monospace;
   font-size: 14px;
+  background: transparent;
 }
 
 /* Window */
 window {
   margin: 0px;
   padding: 10px;
-  border: 0.16em solid @lavender;
-  border-radius: 2em;
-  background-color: @base;
   animation: slideIn 0.5s ease-in-out both;
 }
 
@@ -82,7 +80,6 @@ window {
   margin: 5px;
   padding: 10px;
   border: none;
-  background-color: @base;
   animation: fadeIn 0.5s ease-in-out both;
 }
 
@@ -103,16 +100,14 @@ window {
   padding: 10px;
   border: none;
   border-radius: 2em;
-  background-color: @base;
-}
+  }
 
 /* Scroll */
 #scroll {
   margin: 0px;
   padding: 10px;
   border: none;
-  background-color: @base;
-}
+  }
 
 /* Input */
 #input {
@@ -120,8 +115,8 @@ window {
   padding: 10px;
   border: none;
   border-radius: 1em;
-  color: @text;
-  background-color: @base;
+  box-shadow: none;
+  color: @mauve;
   animation: fadeIn 0.5s ease-in-out both;
 }
 
@@ -143,8 +138,7 @@ window {
 }
 
 #entry {
-  background-color: @base;
-}
+  }
 
 #entry arrow {
   border: none;
