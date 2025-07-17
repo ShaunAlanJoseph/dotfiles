@@ -142,4 +142,15 @@ window#waybar.empty #window {
     border-left: none;
 	border-radius: 0 1rem 1rem 0;
     padding: 0 10px 0 5px;
+    margin: 0 5px 0 0;
+}
+
+#custom-notification {
+    color: @rosewater;
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    font-size: 15px;
+    background-color: @base;
+    border: 2px solid @rosewater;
+    border-radius: 0.5rem;
+    padding: 0 8px 0 8px;
 }
