@@ -38,7 +38,7 @@
       "KC_RBRC",
       "KC_BSLS",
       "KC_PSCR",
-      "KC_ESC",
+      "LCTL_T(KC_ESC)",
       "KC_A",
       "KC_S",
       "KC_D",
