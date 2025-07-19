@@ -1,239 +1,152 @@
 {
-    // VS Code
-    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}VS Code with Shaun",
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "git.openRepositoryInParentFolders": "never",
-    "workbench.settings.applyToAllProfiles": [
-        "workbench.colorCustomizations"
-    ],
-    "workbench.colorCustomizations": {
-        "terminal.background": "#00000000",
-        "gitDecoration.untrackedResourceForeground": "#f9e2af", // Yellow color for untracked files
-        "gitDecoration.modifiedResourceForeground": "#a6e3a1", // Green color for modified files
-        "gitDecoration.stageModifiedResourceForeground": "#a6e3a1" // Green color for modified files
+  //===UI===//
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}VS Code with Shaun",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono', monospace",
+  "editor.fontLigatures": true,
+  "editor.cursorBlinking": "expand",
+  // Layout
+  "window.titleBarStyle": "custom",
+  "editor.minimap.enabled": false,
+  "workbench.activityBar.location": "top",
+  "window.customTitleBarVisibility": "auto",
+
+  //===GIT===//
+  "git.openRepositoryInParentFolders": "never",
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000",
+    "gitDecoration.untrackedResourceForeground": "#f9e2af", // Yellow color for untracked files
+    "gitDecoration.modifiedResourceForeground": "#a6e3a1", // Green color for modified files
+    "gitDecoration.stageModifiedResourceForeground": "#a6e3a1" // Green color for modified files
+  },
+
+  //===GITHUB COPILOT===//
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.enable": {
+    "*": true
+  },
+
+  //===RAINBOW INDENT===//
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.2)",
+    "rgba(127,255,127,0.2)",
+    "rgba(255,127,255,0.2)",
+    "rgba(79,236,236,0.2)"
+  ],
+  "indentRainbow.ignoreErrorLanguages": ["*"],
+
+  //==FILES===//
+  "files.autoSave": "afterDelay",
+
+  //===VIM===//
+  "editor.lineNumbers": "relative",
+  "vim.leader": "<Space>",
+  "vim.mouseSelectionGoesIntoVisualMode": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+
+  //===KEYBINDINGS===//
+  "editor.acceptSuggestionOnEnter": "off",
+  // Free up Alt
+  "window.enableMenuBarMnemonics": false,
+  "window.customMenuBarAltFocus": false,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // formatting
+    {
+      "before": ["leader", "f"],
+      "commands": ["editor.action.formatDocument"]
     },
-    // UI
-    "window.titleBarStyle": "custom",
-    "workbench.activityBar.location": "top",
-    "window.customTitleBarVisibility": "auto",
-    "editor.minimap.enabled": false,
-    "editor.fontFamily": "'CaskaydiaCove Nerd Font Mono', monospace",
-    "editor.fontLigatures": true,
-    "editor.cursorBlinking": "expand",
-    // Rainbow Indent
-    "indentRainbow.lightIndicatorStyleLineWidth": 1,
-    "indentRainbow.indicatorStyle": "light",
-    "indentRainbow.colors": [
-        "rgba(255,255,64,0.2)",
-        "rgba(127,255,127,0.2)",
-        "rgba(255,127,255,0.2)",
-        "rgba(79,236,236,0.2)"
-    ],
-    "indentRainbow.ignoreErrorLanguages": [
-        "markdown",
-        "dart"
-    ],
-    // VIM
-    "editor.lineNumbers": "relative",
-    "vim.leader": "<Space>",
-    "vim.mouseSelectionGoesIntoVisualMode": true,
-    "vim.ignorecase": false,
-    "vim.insertModeKeyBindingsNonRecursive": [
-        //===Navigation===//
-        {
-            "before": [
-                "k",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        //===MISC===//
-        // yanking
-        {
-            "before": [
-                "<leader>",
-                "y"
-            ],
-            "after": [
-                ":",
-                "%",
-                "y",
-                "+",
-                "<CR>"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "p"
-            ],
-            "commands": [
-                "copyFilePath"
-            ]
-        },
-        // formatting
-        {
-            "before": [
-                "leader",
-                "f"
-            ],
-            "commands": [
-                "editor.action.formatDocument"
-            ]
-        },
-        // undo && redo
-        {
-            "before": [
-                "u"
-            ],
-            "commands": [
-                "undo"
-            ]
-        },
-        {
-            "before": [
-                "<C-r>"
-            ],
-            "commands": [
-                "redo"
-            ]
-        },
-        // toggle comment
-        {
-            "before": [
-                // "leader",
-                "g",
-                "c"
-            ],
-            "commands": [
-                "editor.action.commentLine"
-            ]
-        },
-        // code actions
-        {
-            "before": [
-                "g",
-                "r",
-                "a"
-            ],
-            "commands": [
-                "editor.action.quickFix"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "r",
-                "r"
-            ],
-            "commands": [
-                "editor.action.rename"
-            ]
-        },
-        // files
-        {
-            "before": [
-                "<leader>",
-                "s",
-                "f"
-            ],
-            "commands": [
-                "workbench.action.quickOpen"
-            ]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        // yanking
-        {
-            "before": [
-                "<A-y>"
-            ],
-            "after": [
-                "\"",
-                "+",
-                "y"
-            ]
-        },
-        // stay in visual mode while indenting
-        {
-            "before": [
-                "<"
-            ],
-            "commands": [
-                "editor.action.outdentLines"
-            ]
-        },
-        {
-            "before": [
-                ">"
-            ],
-            "commands": [
-                "editor.action.indentLines"
-            ]
-        },
-        // toggle comment
-        {
-            "before": [
-                // "leader",
-                "g",
-                "c"
-            ],
-            "commands": [
-                "editor.action.commentLine"
-            ]
-        },
-        // code actions
-        {
-            "before": [
-                "g",
-                "r",
-                "a"
-            ],
-            "commands": [
-                "editor.action.quickFix"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "r",
-                "r"
-            ],
-            "commands": [
-                "editor.action.rename"
-            ]
-        },
-        // files
-        {
-            "before": [
-                "<leader>",
-                "s",
-                "f"
-            ],
-            "commands": [
-                "workbench.action.quickOpen"
-            ]
-        }
-    ],
-    // Misc
-    "editor.acceptSuggestionOnEnter": "off",
-    "cSpell.userWords": [
-        "CODEFORCES",
-        "dotenv",
-        "problemset"
-    ],
-    "dart.flutterSdkPath": "/home/shxun/flutter",
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "dart": true
+    // undo && redo
+    {
+      "before": ["u"],
+      "commands": ["undo"]
     },
-    "workbench.iconTheme": "material-icon-theme"
+    {
+      "before": ["<C-r>"],
+      "commands": ["redo"]
+    },
+    // toggle comment
+    {
+      "before": ["g", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    // code actions
+    {
+      "before": ["g", "r", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["g", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    // files
+    {
+      "before": ["<leader>", "s", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    // tab navigation
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.nextEditor"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // stay in visual mode while indenting
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    // toggle comment
+    {
+      "before": ["g", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    // code actions
+    {
+      "before": ["g", "r", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["g", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    // files
+    {
+      "before": ["<leader>", "s", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    // tab navigation
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.nextEditor"]
+    }
+  ],
+
+  //===CSPELL===//
+  "cSpell.enabledNotifications": {
+    "Lines too Long": false
+  },
+  "cSpell.userWords": ["dotenv"],
+
+  //===MISC===//
+  "python.analysis.typeCheckingMode": "strict",
+  "dart.flutterSdkPath": "/home/shxun/.local/bin/flutter",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
