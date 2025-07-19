@@ -14,12 +14,16 @@ alias py3=python3
 alias i='yay -S'
 alias s='yay -Ss'
 alias r='yay -Rns'
+alias hpe='hyprctl dispatch exec'
 
 # basic shell prompt
 PS1='[\u@\h \W]\$ '
 
 # starship prompt
 eval "$(starship init bash)"
+
+# smarter cd command
+eval "$(zoxide init --cmd cd bash)"
 
 # pipx
 export PATH="$PATH:$HOME/.local/bin"
